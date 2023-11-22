@@ -88,18 +88,8 @@ publishing {
     publications {
         register<MavenPublication>("release") {
             groupId = "com.github.tfaki"
-            artifactId = "com.loftymr.countrycp"
+            artifactId = "countrycp"
             version = "1.0.0"
-            pom {
-                description = "First release"
-            }
-
-            afterEvaluate {
-                from(components["release"])
-            }
         }
-    }
-    repositories {
-        mavenLocal()
     }
 }
