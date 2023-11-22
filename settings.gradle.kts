@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "CountryCodePicker"
 include(":app")
- 
+include(":countrycp")

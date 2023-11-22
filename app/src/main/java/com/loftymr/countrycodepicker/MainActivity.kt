@@ -19,9 +19,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.loftymr.countrycodepicker.ui.theme.CountryCodePickerTheme
-import com.loftymr.countrycodepicker.utils.EMPTY_STRING
-import com.loftymr.countrycodepicker.utils.isPhoneNumberValid
+import com.loftymr.countrycp.CountryCP
+import com.loftymr.countrycp.ui.theme.CountryCodePickerTheme
+import com.loftymr.countrycp.utils.EMPTY_STRING
+import com.loftymr.countrycp.utils.isPhoneNumberValid
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
