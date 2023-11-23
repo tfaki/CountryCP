@@ -1,22 +1,18 @@
 [versions]
-agp = "8.3.0-alpha12"
-gradle = "8.3.0-alpha12"
-kotlin = "1.9.0"
+agp = "7.3.0"
+kotlin = "1.8.22"
 coreKtx = "1.12.0"
 junit = "4.13.2"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
-kotlinGradlePlugin = "1.7.20"
 lifecycleRuntimeKtx = "2.6.2"
 activityCompose = "1.8.1"
 composeBom = "2023.08.00"
 libPhoneNumber = "8.13.25"
-appcompat = "1.6.1"
-material = "1.10.0"
+material3 = "1.1.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
-gradle = { module = "com.android.tools.build:gradle", version.ref = "gradle" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -30,10 +26,7 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
-kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 libPhoneNumber = { group = "com.googlecode.libphonenumber", name = "libphonenumber", version.ref = "libPhoneNumber"}
-androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

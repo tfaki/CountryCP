@@ -10,7 +10,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        minSdk = 24
+        minSdk = 23
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -39,7 +39,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.4.8"
     }
 }
 
@@ -66,7 +66,7 @@ afterEvaluate {
             register<MavenPublication>("release") {
                 groupId = "com.github.tfaki"
                 artifactId = "countrycp"
-                version = "1.0.1"
+                version = "1.0.3"
 
                 from(components["release"])
             }
