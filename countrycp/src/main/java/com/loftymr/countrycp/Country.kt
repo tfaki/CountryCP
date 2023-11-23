@@ -247,6 +247,6 @@ enum class Country(
     Zimbabwe("ZW", "+263");
 
     companion object {
-        val countryList = entries.toList()
+        val countryList = enumValues<Country>().toList()
     }
 }
