@@ -48,12 +48,6 @@ class MainActivity : ComponentActivity() {
                                 .background(Color.White)
                                 .fillMaxWidth()
                                 .padding(horizontal = 16.dp, vertical = 8.dp),
-                            searchModifier = Modifier
-                                .background(Color.White)
-                                .padding(16.dp)
-                                .fillMaxWidth()
-                                .height(235.dp)
-                                .border(width = 1.dp, color = Color(0xFFDADADA), shape = RoundedCornerShape(8.dp)),
                             text = phoneNumber.value,
                             shape = RoundedCornerShape(8.dp),
                             showError = showError.value,

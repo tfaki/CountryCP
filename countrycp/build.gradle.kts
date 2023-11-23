@@ -66,7 +66,7 @@ afterEvaluate {
             register<MavenPublication>("release") {
                 groupId = "com.github.tfaki"
                 artifactId = "countrycp"
-                version = "1.0.4"
+                version = "1.0.5"
 
                 from(components["release"])
             }
