@@ -11,8 +11,6 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.PressInteraction
 import androidx.compose.foundation.layout.Arrangement
@@ -21,13 +19,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
@@ -81,6 +77,7 @@ private var fullNumberState: String by mutableStateOf(EMPTY_STRING)
 @Composable
 fun CountryCP(
     modifier: Modifier = Modifier,
+    searchModifier: Modifier = Modifier,
     text: String = EMPTY_STRING,
     onValueChange: (String) -> Unit = {},
     onFullNumberValue: (String) -> Unit = {},
@@ -90,6 +87,7 @@ fun CountryCP(
     errorText: String? = null,
     showClearIcon: Boolean = true,
     focusField: Boolean = false,
+    initialCountryCode: String = "+90",
     errorTextPaddings: PaddingValues = PaddingValues(horizontal = 16.dp),
     phonePlaceholder: @Composable ((txtPlaceHolder: String?) -> Unit) = { txtPlaceHolder ->
         Text(
@@ -118,7 +116,7 @@ fun CountryCP(
 
     var textFieldValue by remember { mutableStateOf(EMPTY_STRING) }
     val keyboardController = LocalSoftwareKeyboardController.current
-    var isPickCountry by remember { mutableStateOf(Country.countryList.first()) }
+    var isPickCountry by remember { mutableStateOf(Country.countryList.first { it.countryPhoneCode == initialCountryCode }) }
     var phoneCode by remember { mutableStateOf(isPickCountry.countryPhoneCode) }
     var expanded by remember { mutableStateOf(false) }
     val rotationState by animateFloatAsState(targetValue = if (expanded) 180f else 0f, label = EMPTY_STRING)
@@ -265,11 +263,13 @@ fun CountryCP(
                 exit = fadeOut() + shrinkVertically()
             ) {
                 SearchCountry(
+                    modifier = searchModifier,
                     searchFieldColors = searchFieldColors,
                     searchPlaceholder = searchPlaceholder,
                     onSelected = {
                         isPickCountry = it
                         phoneCode = it.countryPhoneCode
+                        expanded = !expanded
                     }
                 )
             }
@@ -281,6 +281,7 @@ fun CountryCP(
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun SearchCountry(
+    modifier: Modifier = Modifier,
     searchFieldColors: TextFieldColors = TextFieldDefaults.colors(),
     searchPlaceholder: @Composable ((txtPlaceHolder: String?) -> Unit) = { txtPlaceHolder ->
         Text(
@@ -296,12 +297,7 @@ fun SearchCountry(
     var searchValue by remember { mutableStateOf("") }
 
     LazyColumn(
-        modifier = Modifier
-            .background(Color.White)
-            .padding(horizontal = 16.dp)
-            .fillMaxWidth()
-            .height(235.dp)
-            .border(width = 1.dp, color = Color(0xFFDADADA), shape = RoundedCornerShape(8.dp))
+        modifier = modifier
     ) {
         stickyHeader {
             SearchField(

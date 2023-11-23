@@ -4,10 +4,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -46,6 +48,12 @@ class MainActivity : ComponentActivity() {
                                 .background(Color.White)
                                 .fillMaxWidth()
                                 .padding(horizontal = 16.dp, vertical = 8.dp),
+                            searchModifier = Modifier
+                                .background(Color.White)
+                                .padding(16.dp)
+                                .fillMaxWidth()
+                                .height(235.dp)
+                                .border(width = 1.dp, color = Color(0xFFDADADA), shape = RoundedCornerShape(8.dp)),
                             text = phoneNumber.value,
                             shape = RoundedCornerShape(8.dp),
                             showError = showError.value,
