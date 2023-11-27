@@ -57,8 +57,10 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -70,6 +72,7 @@ import com.loftymr.countrycp.utils.CCPLaunchedEffect
 import com.loftymr.countrycp.utils.EMPTY_STRING
 import com.loftymr.countrycp.utils.PhoneNumberTransformation
 import com.loftymr.countrycp.utils.clickableNoRipple
+import com.loftymr.countrycp.utils.filterCountries
 import com.loftymr.countrycp.utils.getCountryFlags
 import com.loftymr.countrycp.utils.mergeNameAndCode
 import java.util.Locale
@@ -83,8 +86,11 @@ fun CountryCP(
     searchModifier: Modifier = Modifier
         .padding(16.dp)
         .fillMaxWidth()
-        .height(235.dp)
-        .border(width = 1.dp, color = Color(0xFFDADADA), shape = RoundedCornerShape(8.dp)),
+        .border(
+            width = 1.dp,
+            color = Color(0xFFDADADA),
+            shape = RoundedCornerShape(8.dp)
+        ),
     text: String = EMPTY_STRING,
     onValueChange: (String) -> Unit = {},
     onFullNumberValue: (String) -> Unit = {},
@@ -308,6 +314,7 @@ fun SearchCountry(
 
     LazyColumn(
         modifier = modifier
+            .height(235.dp)
     ) {
         stickyHeader {
             SearchField(
@@ -357,7 +364,7 @@ fun SearchCountry(
                 )
 
                 Text(
-                    text = mergeNameAndCode(it.name, it.countryPhoneCode),
+                    text = mergeNameAndCode(stringResource(id = it.countryName), it.countryPhoneCode),
                     style = TextStyle.Default,
                     color = Color(0xFF212121),
                     fontSize = 14.sp
@@ -381,6 +388,7 @@ fun SearchField(
     filteredCountries: (MutableList<Country>) -> Unit
 ) {
     val focusRequester = remember { FocusRequester() }
+    val context = LocalContext.current
 
     TextField(
         modifier = Modifier
@@ -390,20 +398,7 @@ fun SearchField(
         value = searchValue,
         onValueChange = { searchStr ->
             onChangeSearchValue.invoke(searchStr)
-            filteredCountries.invoke(countryList.filter {
-                it.name.contains(
-                    searchStr,
-                    ignoreCase = true,
-                ) ||
-                        it.countryPhoneCode.contains(
-                            searchStr,
-                            ignoreCase = true,
-                        ) ||
-                        it.countryAlphaCode.contains(
-                            searchStr,
-                            ignoreCase = true,
-                        )
-            }.toMutableList())
+            filteredCountries.invoke(countryList.filterCountries(context = context, searchStr = searchStr))
         },
         placeholder = {
             searchPlaceholder.invoke("Search...")
