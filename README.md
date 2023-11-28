@@ -1,4 +1,4 @@
-<div align="center"> <h1 align="center">CountryCP</h1> </div>
+<div align="start"> <h1 align="center">CountryCP</h1> </div>
 
 <p align="center">
   <img src="https://img.shields.io/badge/kotlin-%230095D5.svg?style=for-the-badge&logo=kotlin&logoColor=white">
@@ -10,6 +10,19 @@
   <img src="https://jitpack.io/v/tfaki/CountryCP.svg">
   <img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg">
 </p>
+<div align="start"> <h3 align="start">Customize your country text field </h1> </div>
+
+<p align="start">
+ <img src="assets/countrycp.png" width="500" height="450"/>
+</p>
+
+<div align="start"> <h3 align="start">GIF</h1> </div>
+
+<p align="start">
+ <img src="assets/countrycp.GIF" width="40%"/>
+</p>
+
+<div align="start"> <h2 align="start">License</h1> </div>
 
 ``` xml
 
