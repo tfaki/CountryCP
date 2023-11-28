@@ -1,4 +1,15 @@
-# CountryCP
+<div align="center"> <h1 align="center">CountryCP</h1> </div>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/kotlin-%230095D5.svg?style=for-the-badge&logo=kotlin&logoColor=white">
+  <img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white">
+  <img src="https://img.shields.io/badge/Android%20Studio-3DDC84.svg?style=for-the-badge&logo=android-studio&logoColor=white">
+</p>
+
+<p align="center">
+  <img src="https://jitpack.io/v/tfaki/CountryCP.svg">
+  <img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg">
+</p>
 
 ``` xml
 
