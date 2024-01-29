@@ -5,6 +5,7 @@
 </p>
 
 <p align="center">
+  <a href="https://mailchi.mp/kotlinweekly/kotlin-weekly-389"><img alt="Kotlin Weekly" src="https://skydoves.github.io/badges/kotlin-weekly2.svg"/></a>
   <img src="https://jitpack.io/v/tfaki/CountryCP.svg">
   <img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg">
 </p>
